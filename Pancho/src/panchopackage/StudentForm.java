@@ -27,7 +27,7 @@ public class StudentForm extends JFrame {
 
     File file = new File("students.txt");
 
-    // =============================== CONSTRUCTOR ===============================
+   
     public StudentForm() {
         setTitle("Student Record System");
         setSize(600, 520);
@@ -35,7 +35,7 @@ public class StudentForm extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
 
-        // =============================== LABELS ===============================
+      
         JLabel lblId = new JLabel("Student Id:");
         lblId.setBounds(50, 40, 100, 25);
         add(lblId);
@@ -52,7 +52,7 @@ public class StudentForm extends JFrame {
         lblGrade.setBounds(50, 160, 100, 25);
         add(lblGrade);
 
-        // =============================== INPUT FIELDS ===============================
+        
         txtId = new JTextField();
         txtId.setBounds(150, 40, 200, 25);
         add(txtId);
@@ -69,7 +69,7 @@ public class StudentForm extends JFrame {
         txtGrade.setBounds(150, 160, 200, 25);
         add(txtGrade);
 
-        // ========== RESTRICT ID & AGE TO DIGITS ==========
+       
         txtId.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
                 if (!Character.isDigit(e.getKeyChar())) e.consume();
@@ -82,7 +82,7 @@ public class StudentForm extends JFrame {
             }
         });
 
-        // =============================== BUTTONS ===============================
+        
         btnAdd = new JButton("Add");
         btnAdd.setBounds(150, 200, 85, 30);
         add(btnAdd);
@@ -123,7 +123,7 @@ public class StudentForm extends JFrame {
         btnDeleteClear.setBounds(400, 290, 50, 25);
         add(btnDeleteClear);
 
-        // =============================== TABLE ===============================
+        
         model = new DefaultTableModel();
         model.addColumn("Student Id");
         model.addColumn("Name");
@@ -135,7 +135,7 @@ public class StudentForm extends JFrame {
         pane.setBounds(50, 330, 500, 140);
         add(pane);
 
-        // =============================== ACTION LISTENERS ===============================
+        
         btnAdd.addActionListener(e -> addStudent());
         btnClear.addActionListener(e -> clearInput());
         btnSearch.addActionListener(e -> searchStudent());
@@ -143,11 +143,11 @@ public class StudentForm extends JFrame {
         btnDelete.addActionListener(e -> deleteStudent());
         btnDeleteClear.addActionListener(e -> txtDelete.setText(""));
 
-        // Load file data
+       
         loadFromFile();
     }
 
-    // =============================== ADD STUDENT ===============================
+    
     void addStudent() {
         String id = txtId.getText();
         String name = txtName.getText();
@@ -159,7 +159,7 @@ public class StudentForm extends JFrame {
             return;
         }
 
-        // Prevent duplicate ID
+       
         for (Student s : students) {
             if (s.id.equals(id)) {
                 JOptionPane.showMessageDialog(this, "Student ID already exists!");
@@ -178,7 +178,7 @@ public class StudentForm extends JFrame {
         clearInput();
     }
 
-    // =============================== SEARCH STUDENT ===============================
+    
     void searchStudent() {
         String search = txtSearch.getText();
 
@@ -192,7 +192,7 @@ public class StudentForm extends JFrame {
         JOptionPane.showMessageDialog(this, "Student not found!");
     }
 
-    // =============================== DELETE STUDENT ===============================
+    
     void deleteStudent() {
         String del = txtDelete.getText();
 
@@ -209,7 +209,7 @@ public class StudentForm extends JFrame {
         JOptionPane.showMessageDialog(this, "Student not found!");
     }
 
-    // =============================== CLEAR INPUT FIELDS ===============================
+   
     void clearInput() {
         txtId.setText("");
         txtName.setText("");
@@ -217,7 +217,7 @@ public class StudentForm extends JFrame {
         txtGrade.setText("");
     }
 
-    // =============================== LOAD FROM FILE ===============================
+   
     void loadFromFile() {
         try {
             if (!file.exists()) {
@@ -243,7 +243,7 @@ public class StudentForm extends JFrame {
         }
     }
 
-    // =============================== SAVE TO FILE ===============================
+    
     void saveToFile() {
         try {
             PrintWriter pw = new PrintWriter(new FileWriter(file));
@@ -258,12 +258,12 @@ public class StudentForm extends JFrame {
         }
     }
 
-    // =============================== MAIN ===============================
+   
     public static void main(String[] args) {
         new StudentForm().setVisible(true);
     }
 
-    // =============================== STUDENT CLASS ===============================
+    
     class Student {
         String id, name, age, grade;
 
@@ -275,3 +275,4 @@ public class StudentForm extends JFrame {
         }
     }
 }
+
